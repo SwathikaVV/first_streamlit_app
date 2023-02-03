@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@SwathikaVV 
+SwathikaVV
+/
+first_streamlit_app
+Public
+Cannot fork because you own this repository and are not a member of any organizations.
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+first_streamlit_app/streamlit_app.py /
+@SwathikaVV
+SwathikaVV Update streamlit_app.py
+Latest commit f9c04b9 1 minute ago
+ History
+ 1 contributor
+57 lines (42 sloc)  2.04 KB
+
 
 import streamlit
 import pandas
@@ -43,15 +74,21 @@ try:
 except URLError as e: streamlit.stop()
 
 
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
+def get_fruit_load_list():
+     with my_cnx.cursor() as mu_cur:
+     my_cur.execute("SELECT * from fruit_load_list")
+      return my_cur.fetchall()
+      
+ # add a button to load fruit
+
+if streamlit.button('Get Fruit Load List'): 
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows=get_fruit_load_list()
+  streamlit.dataframe(my_data_rows)
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding', add_my_fruit)
 
 my_cur.execute("insert into fruit_load_list values ('from streamlite')")
+
