@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@SwathikaVV 
-SwathikaVV
-/
-first_streamlit_app
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-first_streamlit_app/streamlit_app.py /
-@SwathikaVV
-SwathikaVV Update streamlit_app.py
-Latest commit f9c04b9 1 minute ago
- History
- 1 contributor
-57 lines (42 sloc)  2.04 KB
-
-
 import streamlit
 import pandas
 import requests
